@@ -12,7 +12,6 @@ set DESIGN_FILELIST  $::env(DESIGN_FILELIST)   ;# Filelist path
 set DESIGN_ELAB_NAME $::env(DESIGN_ELAB_NAME)  ;# Design name to elaborate
 set OUTPUT_DIR       $::env(OUTPUT_DIR)        ;# Output directory
 set OUTPUT_FILE      $::env(OUTPUT_ELAB_FILE)  ;# Output filename
-set SETUP_FILE       $::env(SETUP_FILE)        ;# Extra design options
 
 ### Application setup
 
