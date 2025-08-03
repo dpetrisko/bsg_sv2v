@@ -12,6 +12,7 @@ set DESIGN_FILELIST  $::env(DESIGN_FILELIST)   ;# Filelist path
 set DESIGN_ELAB_NAME $::env(DESIGN_ELAB_NAME)  ;# Design name to elaborate
 set OUTPUT_DIR       $::env(OUTPUT_DIR)        ;# Output directory
 set OUTPUT_FILE      $::env(OUTPUT_ELAB_FILE)  ;# Output filename
+set SETUP_FILE       $::env(SETUP_FILE)        ;# Extra design options
 
 ### Application setup
 
@@ -23,6 +24,14 @@ set_app_var sh_command_log_file              $OUTPUT_DIR/command.log   ;# Redire
 set_app_var verilogout_no_tri                true                      ;# Make unknown port connections wires not tris
 set_app_var hdlin_ff_always_sync_set_reset   true                      ;# Try to infer synchronous set/reset logic
 set_app_var hdlin_ff_always_async_set_reset  false                     ;# Don't try to infer asynchronous set/reset logic
+
+### Do additional design setup
+
+if {[info exists ::env(SETUP_FILE)]} {
+    if {[file exists $::env(SETUP_FILE)]} {
+        source -echo -verbose $::env(SETUP_FILE)
+    }
+}
 
 ### Read in the filelist
 
